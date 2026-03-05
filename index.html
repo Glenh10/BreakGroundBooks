@@ -182,7 +182,7 @@ nav.scrolled .nav-logo img {
 .services-inner { max-width: 1120px; margin: 0 auto; }
 .services-list { border-top: 2px solid var(--ink); }
 .service-row {
-  display: grid; grid-template-columns: 190px 1fr 175px;
+  display: grid; grid-template-columns: 190px 1fr 220px;
   gap: 3rem; padding: 2.5rem 0;
   border-bottom: 1px solid var(--rule);
   align-items: start;
@@ -204,16 +204,67 @@ nav.scrolled .nav-logo img {
 .service-desc {
   font-size: 0.9rem; font-weight: 300; color: var(--mid); line-height: 1.85;
 }
-.service-price-col { text-align: right; }
+.service-price-col { text-align: right; min-width: 160px; }
+.service-price-band { display: none; text-align: right; }
+.service-price-band.active { display: block; }
+.service-price-label {
+  font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em;
+  text-transform: uppercase; color: var(--muted); margin-bottom: 0.15rem;
+}
 .service-price {
   font-family: 'DM Serif Display', serif;
   font-size: 1.3rem; color: var(--teal);
   white-space: nowrap; line-height: 1.2;
 }
 .service-mo {
-  font-size: 0.7rem; color: var(--muted);
-  letter-spacing: 0.06em; text-transform: uppercase; margin-top: 0.2rem;
+  font-size: 0.62rem; color: var(--muted);
+  letter-spacing: 0.06em; text-transform: uppercase; margin-top: 0.1rem;
 }
+
+/* ── REVENUE SLIDER ── */
+.rev-slider-wrap {
+  margin-bottom: 2.5rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.rev-slider-label {
+  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--teal);
+}
+.rev-slider-track {
+  position: relative; height: 4px;
+  background: var(--rule); border-radius: 2px;
+  margin: 1.2rem 0 0.5rem;
+}
+.rev-slider-fill {
+  position: absolute; left: 0; top: 0; height: 100%;
+  background: var(--teal); border-radius: 2px;
+  transition: width 0.25s;
+}
+.rev-slider-stops {
+  display: flex; justify-content: space-between;
+  position: relative;
+}
+.rev-stop {
+  display: flex; flex-direction: column; align-items: center;
+  cursor: pointer; gap: 0.5rem; position: relative;
+}
+.rev-stop-dot {
+  width: 14px; height: 14px; border-radius: 50%;
+  border: 2px solid var(--teal-rule);
+  background: var(--white);
+  transition: background 0.2s, border-color 0.2s, transform 0.2s;
+  margin-top: -9px;
+}
+.rev-stop.active .rev-stop-dot {
+  background: var(--teal); border-color: var(--teal);
+  transform: scale(1.2);
+}
+.rev-stop-text {
+  font-size: 0.68rem; font-weight: 500; color: var(--muted);
+  text-align: center; white-space: nowrap;
+  transition: color 0.2s;
+}
+.rev-stop.active .rev-stop-text { color: var(--teal); }
 
 /* ── PROCESS ── */
 #process {
@@ -302,11 +353,27 @@ nav.scrolled .nav-logo img {
 /* ── FOOTER ── */
 footer {
   background: var(--teal-dark);
-  padding: 2rem 3rem;
-  display: flex; justify-content: space-between; align-items: center;
+  padding: 4rem 3rem 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 0;
 }
-.footer-logo img { height: 26px; width: auto; filter: brightness(0) invert(1); opacity: 0.5; }
-.footer-copy { font-size: 0.75rem; color: rgba(255,255,255,0.25); }
+.footer-logo { margin-bottom: 1.5rem; }
+.footer-logo img { height: 28px; width: auto; filter: brightness(0) invert(1); opacity: 0.45; display: block; }
+.footer-divider {
+  width: 36px; height: 1px;
+  background: rgba(255,255,255,0.12);
+  margin: 0 auto 1.4rem;
+}
+.footer-dba {
+  font-size: 0.68rem; font-weight: 500;
+  letter-spacing: 0.12em; text-transform: uppercase;
+  color: rgba(255,255,255,0.3);
+  margin-bottom: 0.5rem;
+}
+.footer-copy { font-size: 0.7rem; color: rgba(255,255,255,0.18); letter-spacing: 0.01em; }
 
 /* ── RESPONSIVE ── */
 @media (max-width: 960px) {
@@ -333,7 +400,6 @@ footer {
 @media (max-width: 600px) {
   .scope-grid { grid-template-columns: 1fr; }
   .form-row { grid-template-columns: 1fr; }
-  footer { flex-direction: column; gap: 0.8rem; text-align: center; }
 }
 </style>
 </head>
@@ -358,10 +424,10 @@ footer {
   </div>
 
   <div class="hero-inner">
-    <p class="hero-tagline">Bookkeeping built for<br>general contractors.</p>
-    <p class="hero-sub">Most contractors plateau because their finances are a mess. We build the foundation that gets you bondable, bankable, and ready to break through $1M.</p>
+    <p class="hero-tagline">Bookkeeping built for<br>general contractors</p>
+    <p class="hero-sub">Financial clarity for growing construction companies.</p>
     <div class="hero-ctas">
-      <a href="#" class="btn-primary">Start the Conversation</a>
+      <a href="#" class="btn-primary">Book a Call</a>
       <a href="#" class="btn-outline">See Services</a>
     </div>
   </div>
@@ -374,17 +440,50 @@ footer {
     <div class="section-eyebrow">Services</div>
     <h2 class="section-h2">Three tiers. One goal.</h2>
     <p class="section-sub">Built for contractors ready to grow. Start where you are — we'll build the infrastructure that gets you to the next level.</p>
+    <div class="rev-slider-wrap">
+      <div class="rev-slider-label">Your Annual Revenue</div>
+      <div class="rev-slider-track">
+        <div class="rev-slider-fill" id="sliderFill"></div>
+      </div>
+      <div class="rev-slider-stops">
+        <div class="rev-stop active" data-index="0" onclick="setRevBand(0)">
+          <div class="rev-stop-dot"></div>
+          <div class="rev-stop-text">Under $500K</div>
+        </div>
+        <div class="rev-stop" data-index="1" onclick="setRevBand(1)">
+          <div class="rev-stop-dot"></div>
+          <div class="rev-stop-text">$500K – $1.5M</div>
+        </div>
+        <div class="rev-stop" data-index="2" onclick="setRevBand(2)">
+          <div class="rev-stop-dot"></div>
+          <div class="rev-stop-text">$1.5M – $3M</div>
+        </div>
+      </div>
+    </div>
     <div class="services-list">
       <div class="service-row">
         <div>
           <div class="service-num">01</div>
           <div class="service-tier">Essentials</div>
-          <div class="service-tagline">Clean books. Monthly clarity.</div>
+          <div class="service-tagline">Clean, reliable books every month.</div>
         </div>
-        <div class="service-desc">Accurate books, reconciled accounts, and a clean P&L delivered every month. Arrive at tax season prepared — no scramble, no surprises. The right foundation to build from.</div>
+        <div class="service-desc"> Accurate categorization, reconciled accounts, and a clear monthly P&L so you always know where the business stands. Arrive at tax season prepared — no scramble, no surprises.</div>
         <div class="service-price-col">
-          <div class="service-price">$750–$1,000</div>
-          <div class="service-mo">per month</div>
+          <div class="service-price-band active" data-band="0">
+            <div class="service-price-label">Under $500K</div>
+            <div class="service-price">$500–$700</div>
+            <div class="service-mo">per month</div>
+          </div>
+          <div class="service-price-band" data-band="1">
+            <div class="service-price-label">$500K–$1.5M</div>
+            <div class="service-price">$650–$900</div>
+            <div class="service-mo">per month</div>
+          </div>
+          <div class="service-price-band" data-band="2">
+            <div class="service-price-label">$1.5M–$3M</div>
+            <div class="service-price">$800–$1,200</div>
+            <div class="service-mo">per month</div>
+          </div>
         </div>
       </div>
       <div class="service-row">
@@ -393,10 +492,23 @@ footer {
           <div class="service-tier">Operations</div>
           <div class="service-tagline">Full financial operations.</div>
         </div>
-        <div class="service-desc">Everything in Essentials plus job costing by project, subcontractor payment tracking, payroll administration, and a monthly reporting package. Know exactly where each job stands. Bid with confidence.</div>
+        <div class="service-desc">Everything in Essentials plus job costing by project, subcontractor payment tracking, payroll administration, and a monthly reporting package. See exactly where each job stands and bid with confidence.</div>
         <div class="service-price-col">
-          <div class="service-price">$1,500–$2,000</div>
-          <div class="service-mo">per month</div>
+          <div class="service-price-band active" data-band="0">
+            <div class="service-price-label">Under $500K</div>
+            <div class="service-price">$800–$1,100</div>
+            <div class="service-mo">per month</div>
+          </div>
+          <div class="service-price-band" data-band="1">
+            <div class="service-price-label">$500K–$1.5M</div>
+            <div class="service-price">$1,200–$1,600</div>
+            <div class="service-mo">per month</div>
+          </div>
+          <div class="service-price-band" data-band="2">
+            <div class="service-price-label">$1.5M–$3M</div>
+            <div class="service-price">$1,500–$2,100</div>
+            <div class="service-mo">per month</div>
+          </div>
         </div>
       </div>
       <div class="service-row">
@@ -405,10 +517,23 @@ footer {
           <div class="service-tier">Controller</div>
           <div class="service-tagline">Built to scale.</div>
         </div>
-        <div class="service-desc">WIP schedules, cash flow forecasting, budget vs. actual by project, and a dedicated monthly review call. Get bondable, bankable, and ready to take on larger projects. For contractors serious about breaking through.</div>
+        <div class="service-desc">Everything in Operations plus WIP schedules, cash flow forecasting, budget vs. actual by project, and a dedicated monthly financial review. Become bondable, bankable, and ready to take on larger projects.</div>
         <div class="service-price-col">
-          <div class="service-price">$2,500–$3,000</div>
-          <div class="service-mo">per month</div>
+          <div class="service-price-band active" data-band="0">
+            <div class="service-price-label">Under $500K</div>
+            <div class="service-price">$1,500–$2,200</div>
+            <div class="service-mo">per month</div>
+          </div>
+          <div class="service-price-band" data-band="1">
+            <div class="service-price-label">$500K–$1.5M</div>
+            <div class="service-price">$2,000–$3,000</div>
+            <div class="service-mo">per month</div>
+          </div>
+          <div class="service-price-band" data-band="2">
+            <div class="service-price-label">$1.5M–$3M</div>
+            <div class="service-price">$2,500–$4,000+</div>
+            <div class="service-mo">per month</div>
+          </div>
         </div>
       </div>
     </div>
@@ -454,10 +579,10 @@ footer {
       <h2 class="contact-h2">Let's talk about your <em>books.</em></h2>
       <p class="contact-sub">We work with a small number of general contractors at a time. If you're ready for books that actually work, reach out and we'll schedule a call.</p>
       <p class="contact-detail">
-        Break Ground Books<br>
-        Glenhold Advisory LLC<br>
+        Break Ground Bookkeeping<br>
         Simi Valley, California<br>
-        <span>jack&#64;glenhold&#46;com</span>
+        <span>jack&#64;breakgroundbooks&#46;com</span><br>
+        
       </p>
     </div>
     <form action="https://formspree.io/f/xvzbdwyy" method="POST">
@@ -502,7 +627,9 @@ footer {
   <div class="footer-logo">
     <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0iVVRGLTgiIHN0YW5kYWxvbmU9Im5vIj8+CjwhRE9DVFlQRSBzdmcgUFVCTElDICItLy9XM0MvL0RURCBTVkcgMS4xLy9FTiIgImh0dHA6Ly93d3cudzMub3JnL0dyYXBoaWNzL1NWRy8xLjEvRFREL3N2ZzExLmR0ZCI+Cjxzdmcgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgdmlld0JveD0iMCAwIDExMDUgMzg3IiB2ZXJzaW9uPSIxLjEiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbDpzcGFjZT0icHJlc2VydmUiIHhtbG5zOnNlcmlmPSJodHRwOi8vd3d3LnNlcmlmLmNvbS8iIHN0eWxlPSJmaWxsLXJ1bGU6ZXZlbm9kZDtjbGlwLXJ1bGU6ZXZlbm9kZDtzdHJva2UtbGluZWpvaW46cm91bmQ7c3Ryb2tlLW1pdGVybGltaXQ6MjsiPgogICAgPGcgaWQ9IkFydGJvYXJkMSIgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwtMTUyLjAwNSwtMTU2LjkyNSkiPgogICAgICAgIDxyZWN0IHg9IjE1Mi4wMDUiIHk9IjE1Ni45MjUiIHdpZHRoPSIxMTA0LjU2IiBoZWlnaHQ9IjM4Ni44MDMiIHN0eWxlPSJmaWxsOm5vbmU7Ii8+CiAgICAgICAgPGcgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwwLjAwNTQ5NjEyLDAuOTI1MjM0KSI+CiAgICAgICAgICAgIDxnIGlkPSJCcmVhayIgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwtMzMuMzgwOSwtMS4xMjEyMSkiPgogICAgICAgICAgICAgICAgPGcgdHJhbnNmb3JtPSJtYXRyaXgoMC45MDg3NTgsLTAuNDE3MzIzLDAuNDE3MzIzLDAuOTA4NzU4LDQ4Ny44NzEsMzIyLjcxNykiPgogICAgICAgICAgICAgICAgICAgIDx0ZXh0IHg9IjBweCIgeT0iODUuODk4cHgiIHN0eWxlPSJmb250LWZhbWlseTonQXJpYWwtQmxhY2snLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmO2ZvbnQtd2VpZ2h0OjkwMDtmb250LXNpemU6MTIwcHg7ZmlsbDpyZ2IoMTIsODcsODYpOyI+SzwvdGV4dD4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsNTcuODE0NCw0NC4xNjEpIj4KICAgICAgICAgICAgICAgICAgICA8dGV4dCB4PSIxMjcuNTcycHgiIHk9IjM3Ni44MzhweCIgc3R5bGU9ImZvbnQtZmFtaWx5OidBcmlhbC1CbGFjaycsICdBcmlhbCBCbGFjaycsIHNhbnMtc2VyaWY7Zm9udC13ZWlnaHQ6OTAwO2ZvbnQtc2l6ZToxMjBweDtmaWxsOnJnYigxMiw4Nyw4Nik7Ij5CPHRzcGFuIHg9IjIxMi41MTJweCAyOTcuNDUycHggIiB5PSIzNzYuODM4cHggMzc2LjgzOHB4ICI+UkU8L3RzcGFuPjwvdGV4dD4KICAgICAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KDAuOTc5NTE2LC0wLjIwMTM2NSwwLjIwMTM2NSwwLjk3OTUxNiwyNDAuNjA1LDc3LjgzNDUpIj4KICAgICAgICAgICAgICAgICAgICA8dGV4dCB4PSIxMjcuNTcycHgiIHk9IjM3Ni44MzhweCIgc3R5bGU9ImZvbnQtZmFtaWx5OidBcmlhbC1CbGFjaycsICdBcmlhbCBCbGFjaycsIHNhbnMtc2VyaWY7Zm9udC13ZWlnaHQ6OTAwO2ZvbnQtc2l6ZToxMjBweDtmaWxsOnJnYigxMiw4Nyw4Nik7Ij5BPC90ZXh0PgogICAgICAgICAgICAgICAgPC9nPgogICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsLTIxMS45OTksMi43ODEzNSkiPgogICAgICAgICAgICAgICAgPHRleHQgaWQ9IkJvb2trZWVwaW5nIiB4PSI0NzguMTk5cHgiIHk9IjUzMy41ODFweCIgc3R5bGU9ImZvbnQtZmFtaWx5OidBcmlhbE1UJywgJ0FyaWFsJywgc2Fucy1zZXJpZjtmb250LXNpemU6MTEwcHg7ZmlsbDpyZ2IoMTIsODcsODYpOyI+Qjx0c3BhbiB4PSI1NTcuMDY4cHggNjQ4LjEyOXB4IDczOS4xOTFweCA4MTguMDZweCA4OTYuOTI5cHggOTc1Ljc5OHB4IDEwNTQuNjdweCAxMTMzLjU0cHggMTE2OS42cHggMTI1NC41NHB4ICIgeT0iNTMzLjU4MXB4IDUzMy41ODFweCA1MzMuNTgxcHggNTMzLjU4MXB4IDUzMy41ODFweCA1MzMuNTgxcHggNTMzLjU4MXB4IDUzMy41ODFweCA1MzMuNTgxcHggNTMzLjU4MXB4ICI+T09LS0VFUElORzwvdHNwYW4+PC90ZXh0PgogICAgICAgICAgICA8L2c+CiAgICAgICAgICAgIDxnIHRyYW5zZm9ybT0ibWF0cml4KDEsMCwwLDEsLTY4LjYyMzYsMTQuNzM3NykiPgogICAgICAgICAgICAgICAgPHRleHQgeD0iNzc3Ljk4NXB4IiB5PSI0MDMuNjM2cHgiIHN0eWxlPSJmb250LWZhbWlseTonQXJpYWwtQmxhY2snLCAnQXJpYWwgQmxhY2snLCBzYW5zLXNlcmlmO2ZvbnQtd2VpZ2h0OjkwMDtmb250LXNpemU6MTIwcHg7ZmlsbDpyZ2IoMTIsODcsODYpOyI+Rzx0c3BhbiB4PSI4NjkuNTQ2cHggOTUyLjQzNXB4IDEwNDRweCAxMTM1LjU2cHggMTIyNy4xMnB4ICIgeT0iNDAzLjYzNnB4IDQwMy42MzZweCA0MDMuNjM2cHggNDAzLjYzNnB4IDQwMy42MzZweCAiPlJPVU5EPC90c3Bhbj48L3RleHQ+CiAgICAgICAgICAgIDwvZz4KICAgICAgICAgICAgPGcgaWQ9IlNob3ZlbCIgdHJhbnNmb3JtPSJtYXRyaXgoMSwwLDAsMSwtNDQuMzgwOSwtMS4xMjEyMSkiPgogICAgICAgICAgICAgICAgPHBhdGggZD0iTTYzNi4xNjEsMzcwLjAxM0M2MzYuMjAyLDM2OS45MzkgNjM2LjE5OSwzNjIuOTI3IDYzNi45ODksMzU2Ljc0NUM2MzcuNjAxLDM1MS45NTcgNjM4LjkyOCwzNDguMTUxIDYzOS42OTMsMzQ1LjU2MkM2NDMuNTAzLDMzMi42NjUgNjY2LjQ1MywzMDIuMTY5IDY2Ny4xNjcsMzAyLjU1OUw2OTIuNzAxLDMyMC4wMjRDNjkyLjcwMSwzMjAuMDI0IDcwNi44MTEsMzAyLjU0OCA3MDYuNzI0LDMwMi4xOTZDNzA2LjYzNywzMDEuODQ0IDcyOS4xNzgsMzE3LjczNyA3MjkuMTc4LDMxNy43MzdMNzE3LjYzLDMzNi41MDJMNzQxLjY2NCwzNTUuMDM1Qzc0My40MTIsMzU2Ljk2MSA3MTQuNDE0LDM5NS44ODYgNjk5Ljc3Miw0MDIuMzY4QzY5OS43MDIsNDAyLjM5OSA3MDYuNzc4LDQwMi4zMDYgNzEwLjIxOCw0MDEuNDAzQzcxMS43MTMsNDAxLjAxIDcxNC4wNDQsNDAwLjQ4MyA3MTYuNjk0LDM5OC43ODlDNzIwLjE0MywzOTYuNTg1IDcyMy4wMDYsMzkzLjA4NSA3MjcuMDQ0LDM5MC41OTZDNzMwLjY5OSwzODguMzQzIDczNS45NTYsMzg5LjExOSA3MzYuODcxLDM4OS43NDVDNzQ0LjI2OCwzOTQuODAzIDc0Mi40MzksMzk3LjQ1NCA3NDIuNDM5LDM5Ny40NTRMNzQ5Ljc2LDQwNy4wMTVMNzU1LjQ5Nyw0MDcuMjU5TDc2Ni44MSw0MjEuNDVMNTM3LjY1OCw0MjEuNDVDNTM3LjUwMiw0MjEuNTA4IDUzNy40NTIsNDIxLjUxMSA1MzcuNTI5LDQyMS40NUw1MzcuNjU4LDQyMS40NUM1MzkuNDQzLDQyMC43ODcgNTU1LjE1Niw0MTIuOTY2IDU1Ni4yMTcsNDEyLjE3NkM1NTcuOTEsNDEwLjkxNiA1NTcuODY4LDQwNy4yNjMgNTYyLjc2LDQwMy45MzlDNTY1LjA2OSw0MDIuMzY5IDU2OS41MTUsNDAwLjMyMiA1NzMuNDc4LDQwMi42NjZDNTc0LjczLDQwMy40MDYgNTgwLjM1NiwzOTIuODI1IDU4OC43MTMsMzkxLjY0OEM1OTcuMDY5LDM5MC40NzEgNjAxLjEwNCwzOTEuMTE1IDYwMS4xMDQsMzkxLjExNUM2MDEuMTA0LDM5MS4xMTUgNjA4LjQ0MiwzNzYuNzEgNjI1LjA3NCwzNzQuNjdDNjM4LjE1MywzNzMuMDY2IDY1MS4xNTIsMzgyLjMwMiA2NTMuOTc0LDM4Ni44NjVDNjU0LjUwOCwzODcuNzI4IDY1NS44NDMsMzg1LjEyNSA2NTguNzYyLDM4NEM2NjAuNTY0LDM4My4zMDYgNjYzLjUzOSwzODMuNjUxIDY2Ni42MDIsMzg0Ljc2OEM2NjcuOTI3LDM4NS4yNTEgNjk1LjU1LDM0MS4xIDcxMy40MywzMTYuNjA3QzcxNC4zODMsMzE1LjMwMiA3MDcuNSwzMTEuMzczIDcwNy41LDMxMS4zNzNDNjk2Ljk1OSwzMjguMzk0IDY4Ny4yMywzNDUuNDI3IDY3OC4yNDgsMzYyLjQ3MUM2ODEuMjE1LDM1MC45MzIgNjg0LjAxMSwzMzkuMzY2IDY4Ni4zMzMsMzI3LjcyNkw2NjkuMjgyLDMxNS4wMzdDNjY5LjI4MiwzMTUuMDM3IDY1OC45MjUsMzI3Ljg3NCA2NTEuMTkyLDM0MS40NDNDNjQ1LDM1Mi4zMDcgNjQ0LjE2OSwzNjYuOTI3IDY0NC41ODYsMzcxLjgyMUM2NDQuNjI5LDM3Mi4zMzIgNjM2LjI4NiwzNzAuMDQ4IDYzNi4xNjEsMzcwLjAxM1pNNjExLjExLDQwOC4wOTFDNjExLjExLDQwOC4wOTEgNTk1LjE5OSwzOTYuNzY2IDU4My4yODIsNDEwLjc0NkM1ODIuMTQyLDQxMi4wODIgNTg3LjU1NSwzOTQuMTk1IDYwNi4yNTcsMzk5LjU5M0M2MDYuODAzLDM5OS43NTEgNjExLjQ2NywzOTIuNDYyIDYxNy42ODIsMzg4LjkxMUM2MjMuMDU0LDM4NS44NDIgNjMwLjEzMywzODYuNDUxIDYzMC4xMzMsMzg2LjQ1MUM2MzAuMTMzLDM4Ni40NTEgNjIwLjM1NCwzOTAuNDg5IDYxNi43MzEsMzk0LjU2NkM2MTAuNjM2LDQwMS40MjIgNjExLjExLDQwOC4wOTEgNjExLjExLDQwOC4wOTFaTTYzNi4xNjEsMzcwLjAxM0w2MzYuMTU5LDM3MC4wMTNDNjM2LjE2LDM3MC4wMTQgNjM2LjE2LDM3MC4wMTQgNjM2LjE2MSwzNzAuMDEzWiIgc3R5bGU9ImZpbGw6cmdiKDEyLDg3LDg2KTsiLz4KICAgICAgICAgICAgICAgIDxwYXRoIGQ9Ik03MTYuNjExLDMwMi4xOUM3MTYuMDA0LDMwMy4wNzggNzEyLjQ0NywyOTkuMjIyIDcxMi40NDcsMjk5LjIyMkw3NjUuMDQ1LDIyMy41MTJMNzY1LjMwNywyMjIuOTgxQzc2NS4wOSwyMjIuNTA2IDc2NC41NDYsMjIxLjM0OCA3NjQuMjE0LDIyMC41NDhDNzY2LjkwMSwyMTYuMTkgNzY5LjU2NywyMTIuOTkzIDc3Mi4yNDEsMjA5LjM5NEM3NzIuMjQxLDIwOS4zOTQgNzcxLjQxNywxODYuNjI1IDc3Mi42MzMsMTgxLjY4Qzc3My44NzIsMTc2LjY0IDc4Mi40NTMsMTYwLjY4MyA3ODcuODgxLDE1OC40NDJDNzg5Ljk0LDE1Ny41OTIgNzkyLjExMywxNTguMzEzIDc5Mi43MjMsMTU4LjczQzc5My4yNTksMTU5LjA5NiA4MjYuNTE5LDE4MC44MjggODMzLjM4LDE4Ni44NTdDODM1LjQzNSwxODguNjYyIDgzNC40MDEsMTkzLjU4IDgzMy4wODMsMTk1LjgwMkM4MjkuNjMyLDIwMS42MTggODIyLjc2MywyMTEuMzM2IDgxNS40ODIsMjE1LjY4OEM4MDkuOTk0LDIxOC45NjcgNzk3LjE3OSwyMjEuOTQ1IDc5NS4yOTUsMjIyLjMzNUM3OTMuOTY0LDIyMi42MSA3ODYuNTQ0LDIzMy41MTYgNzg0LjI4MiwyMzUuNzc0Qzc4My42NzksMjM2LjM3NiA3ODEuNzI3LDIzNS44ODMgNzgxLjcyNywyMzUuODgzTDczMC40MTcsMzExLjczMUw3MjAuODMxLDMwNC45NThMNzcyLjgwMywyMjkuMzQ2TDc2OS40OSwyMjYuMDQ3Qzc2OS40OSwyMjYuMDQ3IDcyNS4yOTcsMjg5LjQ4NCA3MTYuNjExLDMwMi4xOVpNODE4LjAwNSwxOTcuMzEzTDc4OC4yNzMsMTc2LjQ1MkM3ODguMjczLDE3Ni40NTIgNzg2LjExOCwxNzguMjQ2IDc4NC45ODYsMTgxLjI3OEM3ODMuMzc2LDE4NS41ODkgNzgyLjczNCwxOTIuMDczIDc4My44NTMsMTk2LjYzNEM3ODUuMiwyMDIuMTI1IDc5My43OTgsMjA5LjU0NCA3OTkuNjQxLDIwOS4yMjVDODAyLjc4MiwyMDkuMDU0IDgwNS42MSwyMDguMDM2IDgwOC4wNTIsMjA2LjY2MUM4MTQuMjg2LDIwMy4xNSA4MTguMDA1LDE5Ny4zMTMgODE4LjAwNSwxOTcuMzEzWiIgc3R5bGU9ImZpbGw6cmdiKDEyLDg3LDg2KTsiLz4KICAgICAgICAgICAgPC9nPgogICAgICAgIDwvZz4KICAgIDwvZz4KPC9zdmc+Cg==" alt="Break Ground Books">
   </div>
-  <span class="footer-copy">© 2026 Glenhold Advisory LLC. All rights reserved.</span>
+  <div class="footer-divider"></div>
+  <p class="footer-dba">Break Ground Bookkeeping &mdash; a DBA of Glenhold Advisory LLC</p>
+  <p class="footer-copy">&copy; 2026 Glenhold Advisory LLC. All rights reserved.</p>
 </footer>
 
 <script>
@@ -515,6 +642,20 @@ function onScroll() {
   }
 }
 window.addEventListener('scroll', onScroll);
+
+function setRevBand(index) {
+  // Update stops
+  document.querySelectorAll('.rev-stop').forEach(function(s) {
+    s.classList.toggle('active', parseInt(s.dataset.index) === index);
+  });
+  // Update fill
+  var fills = [0, 50, 100];
+  document.getElementById('sliderFill').style.width = fills[index] + '%';
+  // Update price bands
+  document.querySelectorAll('.service-price-band').forEach(function(b) {
+    b.classList.toggle('active', parseInt(b.dataset.band) === index);
+  });
+}
 </script>
 </body>
 </html>
