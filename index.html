@@ -71,6 +71,15 @@ nav.scrolled .nav-logo img {
   font-size: 0.84rem; font-weight: 500;
   cursor: pointer; text-decoration: none;
 }
+.btn-nav-call {
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s;
+}
+.btn-nav-call.visible {
+  opacity: 1;
+  pointer-events: auto;
+}
 
 /* ── HERO ── */
 #hero {
@@ -438,7 +447,7 @@ footer {
     <li><a href="#process">Process</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
-  <a href="#contact" class="btn-nav">Get Started</a>
+  <a href="tel:8054193451" class="btn-nav btn-nav-call" id="navCallBtn">Call (805) 419-3451</a>
 </nav>
 
 <section id="hero">
@@ -450,8 +459,8 @@ footer {
     <p class="hero-tagline">Bookkeeping built for<br>general contractors</p>
     <p class="hero-sub">Financial clarity for growing construction companies.</p>
     <div class="hero-ctas">
-      <a href="#" class="btn-primary">Book a Call</a>
-      <a href="#" class="btn-outline">See Services</a>
+      <a href="tel:8054193451" class="btn-primary">Call (805) 419-3451</a>
+      <a href="#services" class="btn-outline">See Services</a>
     </div>
   </div>
 </section>
@@ -626,7 +635,7 @@ footer {
         
       </p>
     </div>
-    <form action="https://formspree.io/f/xvzbdwyy" method="POST">
+    <form action="https://formspree.io/f/mnjgqwro" method="POST">
       <div class="form-group">
         <div class="form-row">
           <div>
@@ -675,11 +684,21 @@ footer {
 
 <script>
 var nav = document.getElementById('main-nav');
+var navCallBtn = document.getElementById('navCallBtn');
 function onScroll() {
   if (window.scrollY > 80) {
     nav.classList.add('scrolled');
   } else {
     nav.classList.remove('scrolled');
+  }
+  var heroCta = document.querySelector('.hero-ctas');
+  if (heroCta) {
+    var ctaBottom = heroCta.getBoundingClientRect().bottom;
+    if (ctaBottom < 80) {
+      navCallBtn.classList.add('visible');
+    } else {
+      navCallBtn.classList.remove('visible');
+    }
   }
 }
 window.addEventListener('scroll', onScroll);
