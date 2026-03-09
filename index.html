@@ -129,25 +129,45 @@ nav.scrolled .nav-logo img {
 /* Tagline — big, punchy */
 .hero-tagline {
   font-family: 'DM Serif Display', serif;
-  font-size: clamp(1.6rem, 3.5vw, 2.6rem);
+  font-size: clamp(2.2rem, 5vw, 3.8rem);
   font-weight: 400; font-style: italic;
-  color: rgba(255,255,255,0.92);
-  line-height: 1.3; margin-bottom: 0.8rem;
+  color: rgba(255,255,255,0.95);
+  line-height: 1.2; margin-bottom: 1.2rem;
   letter-spacing: -0.01em;
 }
 
 .hero-sub {
-  font-size: 0.95rem; font-weight: 300;
-  color: rgba(255,255,255,0.65);
-  line-height: 1.75; margin-bottom: 2.5rem;
-  max-width: 480px;
+  font-size: 1.05rem; font-weight: 300;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.7; margin-bottom: 2.5rem;
+  max-width: 420px;
 }
 .hero-ctas { display: flex; align-items: center; gap: 1rem; justify-content: center; flex-wrap: wrap; }
+.hero-cta-note {
+  margin-top: 0.9rem;
+  font-size: 0.75rem; font-weight: 300;
+  color: rgba(255,255,255,0.5);
+  letter-spacing: 0.02em;
+}
+.hero-creds {
+  display: flex; align-items: center; justify-content: center;
+  gap: 0; margin-bottom: 2rem;
+  border: 1px solid rgba(255,255,255,0.15);
+  border-radius: 3px; overflow: hidden;
+}
+.hero-cred-item {
+  padding: 0.55rem 1.2rem;
+  font-size: 0.7rem; font-weight: 500;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  color: rgba(255,255,255,0.6);
+  border-right: 1px solid rgba(255,255,255,0.15);
+}
+.hero-cred-item:last-child { border-right: none; }
 .btn-primary {
-  padding: 0.85rem 2rem;
+  padding: 1rem 2.5rem;
   background: var(--teal); color: var(--white);
   border: none; border-radius: 3px;
-  font-size: 0.9rem; font-weight: 500;
+  font-size: 1.2rem; font-weight: 500;
   cursor: pointer; text-decoration: none; display: inline-block;
 }
 .btn-outline {
@@ -200,7 +220,7 @@ nav.scrolled .nav-logo img {
 .services-inner { max-width: 1120px; margin: 0 auto; }
 .services-list { border-top: 2px solid var(--ink); }
 .service-row {
-  display: grid; grid-template-columns: 190px 1fr 220px;
+  display: grid; grid-template-columns: 220px 1fr;
   gap: 3rem; padding: 2.5rem 0;
   border-bottom: 1px solid var(--rule);
   align-items: start;
@@ -222,90 +242,6 @@ nav.scrolled .nav-logo img {
 .service-desc {
   font-size: 0.9rem; font-weight: 300; color: var(--mid); line-height: 1.85;
 }
-.service-price-col { text-align: right; min-width: 160px; }
-.service-price-band { display: none; text-align: right; }
-.service-price-band.active { display: block; }
-.service-price-label {
-  font-size: 0.62rem; font-weight: 500; letter-spacing: 0.1em;
-  text-transform: uppercase; color: var(--muted); margin-bottom: 0.15rem;
-}
-.service-price {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.3rem; color: var(--teal);
-  white-space: nowrap; line-height: 1.2;
-}
-.service-mo {
-  font-size: 0.62rem; color: var(--muted);
-  letter-spacing: 0.06em; text-transform: uppercase; margin-top: 0.1rem;
-}
-.founding-badge {
-  display: inline-block;
-  font-size: 0.58rem; font-weight: 500; letter-spacing: 0.1em;
-  text-transform: uppercase; color: #1f9e4a;
-  border: 1px solid #1f9e4a; border-radius: 2px;
-  padding: 0.15rem 0.45rem; margin-bottom: 0.2rem;
-}
-.founding-badge-wrap {
-  display: block; text-align: right; margin-bottom: 0.15rem;
-}
-.service-price-original {
-  font-family: 'DM Serif Display', serif;
-  font-size: 1.3rem; color: var(--muted);
-  text-decoration: line-through;
-  text-decoration-color: #c0392b;
-  text-decoration-thickness: 2px;
-  white-space: nowrap; line-height: 1.2;
-  margin-bottom: 0.1rem;
-}
-.service-price.discounted {
-  color: #1f9e4a;
-}
-
-/* ── REVENUE SLIDER ── */
-.rev-slider-wrap {
-  margin-bottom: 2.5rem;
-  display: flex; flex-direction: column; gap: 0.75rem;
-}
-.rev-slider-label {
-  font-size: 0.7rem; font-weight: 500; letter-spacing: 0.12em;
-  text-transform: uppercase; color: var(--teal);
-}
-.rev-slider-track {
-  position: relative; height: 4px;
-  background: var(--rule); border-radius: 2px;
-  margin: 1.2rem 0 0.5rem;
-}
-.rev-slider-fill {
-  position: absolute; left: 0; top: 0; height: 100%;
-  background: var(--teal); border-radius: 2px;
-  transition: width 0.25s;
-}
-.rev-slider-stops {
-  display: flex; justify-content: space-between;
-  position: relative;
-}
-.rev-stop {
-  display: flex; flex-direction: column; align-items: center;
-  cursor: pointer; gap: 0.5rem; position: relative;
-}
-.rev-stop-dot {
-  width: 14px; height: 14px; border-radius: 50%;
-  border: 2px solid var(--teal-rule);
-  background: var(--white);
-  transition: background 0.2s, border-color 0.2s, transform 0.2s;
-  margin-top: -9px;
-}
-.rev-stop.active .rev-stop-dot {
-  background: var(--teal); border-color: var(--teal);
-  transform: scale(1.2);
-}
-.rev-stop-text {
-  font-size: 0.68rem; font-weight: 500; color: var(--muted);
-  text-align: center; white-space: nowrap;
-  transition: color 0.2s;
-}
-.rev-stop.active .rev-stop-text { color: var(--teal); }
-
 /* ── PROCESS ── */
 #process {
   background: var(--off);
@@ -426,7 +362,7 @@ footer {
   .intro-inner { grid-template-columns: 1fr; gap: 3rem; }
   .intro-checks { grid-template-columns: 1fr; }
   .service-row { grid-template-columns: 1fr; gap: 0.8rem; }
-  .service-price-col { text-align: left; }
+
   .service-row:hover { margin: 0; padding-left: 0; padding-right: 0; }
   .scope-grid { grid-template-columns: 1fr 1fr; }
   .process-steps { grid-template-columns: 1fr 1fr; }
@@ -452,7 +388,6 @@ footer {
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
-    <li><a href="#process">Process</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="tel:8054193451" class="btn-nav btn-nav-call" id="navCallBtn">Call (805) 419-3451</a>
@@ -464,12 +399,12 @@ footer {
   </div>
 
   <div class="hero-inner">
-    <p class="hero-tagline">Bookkeeping built for<br>contractors, plumbers, and skilled trades</p>
-    <p class="hero-sub">Financial clarity for growing contractors and service trades.</p>
+    <p class="hero-tagline">Your books shouldn't<br>be a second job.</p>
+    <p class="hero-sub">Clean books. Delivered every month. Built for trades and home services.</p>
     <div class="hero-ctas">
       <a href="tel:8054193451" class="btn-primary">Call (805) 419-3451</a>
-      <a href="#services" class="btn-outline">See Services</a>
     </div>
+    <p class="hero-cta-note">30 minutes. No obligation.</p>
   </div>
 </section>
 
@@ -477,157 +412,28 @@ footer {
 <!-- SERVICES -->
 <section id="services">
   <div class="services-inner">
-    <div class="section-eyebrow">Services</div>
-    <h2 class="section-h2">Three tiers. One goal.</h2>
-    <p class="section-sub">Built for contractors ready to grow. Start where you are — we'll build the infrastructure that gets you to the next level.</p>
-    <div class="rev-slider-wrap">
-      <div class="rev-slider-label">Your Annual Revenue</div>
-      <div class="rev-slider-track">
-        <div class="rev-slider-fill" id="sliderFill"></div>
-      </div>
-      <div class="rev-slider-stops">
-        <div class="rev-stop active" data-index="0" onclick="setRevBand(0)">
-          <div class="rev-stop-dot"></div>
-          <div class="rev-stop-text">Under $500K</div>
-        </div>
-        <div class="rev-stop" data-index="1" onclick="setRevBand(1)">
-          <div class="rev-stop-dot"></div>
-          <div class="rev-stop-text">$500K – $1.5M</div>
-        </div>
-        <div class="rev-stop" data-index="2" onclick="setRevBand(2)">
-          <div class="rev-stop-dot"></div>
-          <div class="rev-stop-text">$1.5M – $3M</div>
-        </div>
-      </div>
-    </div>
+    <div class="section-eyebrow">What You Get</div>
+    <h2 class="section-h2">We handle your books.<br>You run your business.</h2>
     <div class="services-list">
       <div class="service-row">
         <div>
-          <div class="service-num">01</div>
-          <div class="service-tier">Essentials</div>
-          <div class="service-tagline">Clean, reliable books every month.</div>
+          <div class="service-tier">Every month, without fail:</div>
         </div>
-        <div class="service-desc"> Accurate categorization, reconciled accounts, and a clear monthly P&L so you always know where the business stands. Arrive at tax season prepared — no scramble, no surprises.</div>
-        <div class="service-price-col">
-          <div class="service-price-band active" data-band="0">
-            <div class="service-price-label">Under $500K</div>
-            <div class="service-price-original">$350–$500</div>
-            <div class="founding-badge-wrap"><span class="founding-badge">Founding Client Rate</span></div>
-            <div class="service-price discounted">$225–$350</div>
-            <div class="service-mo">per month</div>
-          </div>
-          <div class="service-price-band" data-band="1">
-            <div class="service-price-label">$500K–$1.5M</div>
-            <div class="service-price-original">$450–$650</div>
-            <div class="founding-badge-wrap"><span class="founding-badge">Founding Client Rate</span></div>
-            <div class="service-price discounted">$300–$450</div>
-            <div class="service-mo">per month</div>
-          </div>
-          <div class="service-price-band" data-band="2">
-            <div class="service-price-label">$1.5M–$3M</div>
-            <div class="service-price-original">$575–$800</div>
-            <div class="founding-badge-wrap"><span class="founding-badge">Founding Client Rate</span></div>
-            <div class="service-price discounted">$375–$550</div>
-            <div class="service-mo">per month</div>
-          </div>
+        <div class="service-desc">
+          Every transaction categorized. Accounts reconciled. P&amp;L delivered to your inbox. Tax season arrives and there's nothing to do — your CPA gets clean files and you get a smaller bill.
         </div>
       </div>
-      <div class="service-row">
-        <div>
-          <div class="service-num">02</div>
-          <div class="service-tier">Operations</div>
-          <div class="service-tagline">Full financial operations.</div>
-        </div>
-        <div class="service-desc">Everything in Essentials plus job costing by project or service job, subcontractor tracking, payroll administration, and a monthly reporting package. Know where every job stands and price new work with confidence.</div>
-        <div class="service-price-col">
-          <div class="service-price-band active" data-band="0">
-            <div class="service-price-label">Under $500K</div>
-            <div class="service-price-original">$500–$700</div>
-            <div class="founding-badge-wrap"><span class="founding-badge">Founding Client Rate</span></div>
-            <div class="service-price discounted">$325–$500</div>
-            <div class="service-mo">per month</div>
-          </div>
-          <div class="service-price-band" data-band="1">
-            <div class="service-price-label">$500K–$1.5M</div>
-            <div class="service-price-original">$750–$1,050</div>
-            <div class="founding-badge-wrap"><span class="founding-badge">Founding Client Rate</span></div>
-            <div class="service-price discounted">$500–$725</div>
-            <div class="service-mo">per month</div>
-          </div>
-          <div class="service-price-band" data-band="2">
-            <div class="service-price-label">$1.5M–$3M</div>
-            <div class="service-price-original">$950–$1,350</div>
-            <div class="founding-badge-wrap"><span class="founding-badge">Founding Client Rate</span></div>
-            <div class="service-price discounted">$625–$950</div>
-            <div class="service-mo">per month</div>
-          </div>
-        </div>
-      </div>
-      <div class="service-row">
-        <div>
-          <div class="service-num">03</div>
-          <div class="service-tier">Controller</div>
-          <div class="service-tagline">Built to scale.</div>
-        </div>
-        <div class="service-desc">Everything in Operations plus WIP schedules for project work, cash flow forecasting, budget vs. actual by job, and a dedicated monthly financial review. Build a company that's bankable and ready to take on larger projects and service contracts.</div>
-        <div class="service-price-col">
-          <div class="service-price-band active" data-band="0">
-            <div class="service-price-label">Under $500K</div>
-            <div class="service-price-original">$900–$1,300</div>
-            <div class="founding-badge-wrap"><span class="founding-badge">Founding Client Rate</span></div>
-            <div class="service-price discounted">$600–$900</div>
-            <div class="service-mo">per month</div>
-          </div>
-          <div class="service-price-band" data-band="1">
-            <div class="service-price-label">$500K–$1.5M</div>
-            <div class="service-price-original">$1,200–$1,750</div>
-            <div class="founding-badge-wrap"><span class="founding-badge">Founding Client Rate</span></div>
-            <div class="service-price discounted">$825–$1,225</div>
-            <div class="service-mo">per month</div>
-          </div>
-          <div class="service-price-band" data-band="2">
-            <div class="service-price-label">$1.5M–$3M</div>
-            <div class="service-price-original">$1,600–$2,400+</div>
-            <div class="founding-badge-wrap"><span class="founding-badge">Founding Client Rate</span></div>
-            <div class="service-price discounted">$1,100–$1,675+</div>
-            <div class="service-mo">per month</div>
-          </div>
-        </div>
-      </div>
+    </div>
+    <div class="services-cta" style="margin-top: 2.5rem;">
+      <a href="#contact" class="btn-primary">Get a Quote →</a>
+      <p style="margin-top: 0.9rem; font-size: 0.78rem; color: var(--muted);">Flat monthly rate. Scoped on a 30-minute call.</p>
     </div>
   </div>
 </section>
 
 
-<!-- PROCESS -->
-<section id="process">
-  <div class="process-inner">
-    <div class="section-eyebrow">How It Works</div>
-    <h2 class="section-h2">From messy to clear.</h2>
-    <div class="process-steps">
-      <div class="process-step">
-        <div class="step-num">01</div>
-        <div class="step-title">Discovery Call</div>
-        <p class="step-text">30 minutes to understand your business, your current books, and what you need. No obligation, no pitch.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">02</div>
-        <div class="step-title">Books Assessment</div>
-        <p class="step-text">We review your financials, identify gaps, and deliver a clear picture of where things stand and what needs fixing.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">03</div>
-        <div class="step-title">Clean & Configure</div>
-        <p class="step-text">We set up your chart of accounts, clean any backlog, and build the systems that keep your books accurate going forward.</p>
-      </div>
-      <div class="process-step">
-        <div class="step-num">04</div>
-        <div class="step-title">Monthly Rhythm</div>
-        <p class="step-text">Books closed, reports delivered, questions answered — every month. You always know where your business stands.</p>
-      </div>
-    </div>
-  </div>
-</section>
+
+
 
 <!-- CONTACT -->
 <section id="contact">
@@ -711,19 +517,6 @@ function onScroll() {
 }
 window.addEventListener('scroll', onScroll);
 
-function setRevBand(index) {
-  // Update stops
-  document.querySelectorAll('.rev-stop').forEach(function(s) {
-    s.classList.toggle('active', parseInt(s.dataset.index) === index);
-  });
-  // Update fill
-  var fills = [0, 50, 100];
-  document.getElementById('sliderFill').style.width = fills[index] + '%';
-  // Update price bands
-  document.querySelectorAll('.service-price-band').forEach(function(b) {
-    b.classList.toggle('active', parseInt(b.dataset.band) === index);
-  });
-}
 </script>
 </body>
 </html>
