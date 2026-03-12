@@ -220,29 +220,40 @@ nav.scrolled .nav-logo img {
   border-bottom: 1px solid var(--rule);
 }
 .services-inner { max-width: 1120px; margin: 0 auto; }
-.services-list { border-top: 2px solid var(--ink); }
-.service-row {
-  display: grid; grid-template-columns: 220px 1fr;
-  gap: 3rem; padding: 2.5rem 0;
-  border-bottom: 1px solid var(--rule);
-  align-items: start;
+.services-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  margin-top: 1rem;
 }
-.service-row:hover {
-  background: var(--teal-soft);
-  margin: 0 -3rem; padding-left: 3rem; padding-right: 3rem;
+.services-card {
+  background: var(--off);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 2rem;
 }
-.service-num {
-  font-size: 0.65rem; font-weight: 500;
-  letter-spacing: 0.12em; text-transform: uppercase;
-  color: var(--muted); margin-bottom: 0.35rem;
-}
-.service-tier {
+.services-card-icon { font-size: 1.8rem; margin-bottom: 1rem; }
+.services-card-title {
   font-family: 'DM Serif Display', serif;
-  font-size: 1.5rem; font-weight: 400; color: var(--ink); line-height: 1;
+  font-size: 1.15rem; font-weight: 400; color: var(--teal);
+  margin-bottom: 0.6rem;
 }
-.service-tagline { font-size: 0.78rem; color: var(--muted); margin-top: 0.3rem; font-style: italic; }
-.service-desc {
-  font-size: 0.9rem; font-weight: 300; color: var(--mid); line-height: 1.85;
+.services-card-desc {
+  font-size: 0.87rem; font-weight: 300; color: var(--mid);
+  line-height: 1.75; margin-bottom: 1.4rem;
+}
+.services-card-features {
+  list-style: none;
+  display: flex; flex-direction: column; gap: 0.6rem;
+}
+.services-card-features li {
+  display: flex; align-items: flex-start; gap: 0.55rem;
+  font-size: 0.84rem; font-weight: 300; color: var(--mid); line-height: 1.5;
+}
+.services-card-features li::before {
+  content: '✓'; color: var(--teal);
+  font-size: 0.72rem; font-weight: 600;
+  margin-top: 0.18rem; flex-shrink: 0;
 }
 /* ── PROCESS ── */
 #process {
@@ -275,6 +286,112 @@ nav.scrolled .nav-logo img {
   font-size: 0.87rem; font-weight: 300;
   color: var(--mid); line-height: 1.75;
 }
+
+/* ── PRICING ── */
+#pricing {
+  background: var(--off);
+  padding: 7rem 3rem;
+  border-top: 1px solid var(--rule);
+  border-bottom: 1px solid var(--rule);
+}
+.pricing-inner { max-width: 1120px; margin: 0 auto; }
+.pricing-guarantee {
+  display: inline-flex; align-items: center; gap: 0.55rem;
+  background: var(--teal); color: #fff;
+  font-size: 0.72rem; font-weight: 500; letter-spacing: 0.06em;
+  padding: 0.5rem 1.1rem; border-radius: 100px;
+  margin-bottom: 3rem;
+}
+.pricing-guarantee::before { content: '★'; font-size: 0.65rem; }
+.pricing-cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+  align-items: start;
+  margin-bottom: 2rem;
+}
+.pricing-card {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 2.2rem 2rem 2rem;
+  position: relative;
+}
+.pricing-card.featured {
+  border-color: var(--teal-mid);
+  box-shadow: 0 4px 28px rgba(12,87,86,0.10);
+}
+.pricing-badge {
+  position: absolute;
+  top: -13px; left: 50%; transform: translateX(-50%);
+  background: var(--teal-mid); color: #fff;
+  font-size: 0.62rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  padding: 0.3rem 1rem; border-radius: 100px;
+  white-space: nowrap;
+}
+.pricing-tier {
+  font-family: 'DM Serif Display', serif;
+  font-size: 1.3rem; font-weight: 400; color: var(--ink);
+  margin-bottom: 0.3rem;
+}
+.pricing-tagline {
+  font-size: 0.82rem; font-weight: 300; color: var(--muted);
+  margin-bottom: 1.6rem;
+}
+.pricing-price {
+  font-family: 'DM Serif Display', serif;
+  font-size: 2rem; font-weight: 400; color: var(--ink);
+  line-height: 1; margin-bottom: 0.25rem;
+}
+.pricing-price span {
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.82rem; font-weight: 400; color: var(--muted);
+}
+.pricing-note {
+  font-size: 0.75rem; font-style: italic; color: var(--muted);
+  margin-bottom: 1.8rem;
+}
+.pricing-divider {
+  height: 1px; background: var(--rule); margin-bottom: 1.6rem;
+}
+.pricing-features {
+  list-style: none; margin-bottom: 2rem;
+  display: flex; flex-direction: column; gap: 0.75rem;
+}
+.pricing-features li {
+  display: flex; align-items: flex-start; gap: 0.6rem;
+  font-size: 0.87rem; font-weight: 300; color: var(--mid); line-height: 1.5;
+}
+.pricing-features li::before {
+  content: '✓'; color: var(--teal);
+  font-size: 0.78rem; font-weight: 600;
+  margin-top: 0.15rem; flex-shrink: 0;
+}
+.btn-pricing {
+  display: block; width: 100%;
+  padding: 0.85rem 1rem; text-align: center;
+  background: var(--teal); color: var(--white);
+  border: none; border-radius: 3px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem; font-weight: 500;
+  cursor: pointer; text-decoration: none;
+  transition: background 0.15s;
+}
+.btn-pricing:hover { background: var(--teal-dark); }
+.pricing-card.featured .btn-pricing {
+  background: var(--teal-mid);
+}
+.pricing-card.featured .btn-pricing:hover { background: var(--teal-dark); }
+.pricing-footer-note {
+  background: var(--white);
+  border: 1px solid var(--rule);
+  border-radius: 6px;
+  padding: 1.2rem 1.8rem;
+  font-size: 0.82rem; font-weight: 300; color: var(--mid);
+  line-height: 1.7;
+}
+.pricing-footer-note strong { font-weight: 500; color: var(--ink); }
 
 /* ── CONTACT ── */
 #contact {
@@ -360,7 +477,7 @@ footer {
   .hero-content { padding: 0 1.5rem 4rem; }
   .hero-inner { grid-template-columns: 1fr; gap: 3rem; }
   
-  #intro, #services, #scope, #process, #contact { padding: 5rem 1.5rem; }
+  #intro, #services, #scope, #process, #pricing, #contact { padding: 5rem 1.5rem; }
   .intro-inner { grid-template-columns: 1fr; gap: 3rem; }
   .intro-checks { grid-template-columns: 1fr; }
   .service-row { grid-template-columns: 1fr; gap: 0.8rem; }
@@ -368,6 +485,8 @@ footer {
   .service-row:hover { margin: 0; padding-left: 0; padding-right: 0; }
   .scope-grid { grid-template-columns: 1fr 1fr; }
   .process-steps { grid-template-columns: 1fr 1fr; }
+  .services-cards { grid-template-columns: 1fr; }
+  .pricing-cards { grid-template-columns: 1fr; }
   .process-step { border-right: none; border-bottom: 1px solid var(--rule); padding: 2rem 0 2rem 0; }
   .process-step:not(:first-child) { padding-left: 0; }
   .process-step:nth-child(odd) { border-right: 1px solid var(--rule); padding-right: 2rem; }
@@ -393,6 +512,7 @@ footer {
   </a>
   <ul class="nav-links">
     <li><a href="#services">Services</a></li>
+    <li><a href="#pricing">Pricing</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
   <a href="tel:8054193451" class="btn-nav btn-nav-call" id="navCallBtn">Call (805) 419-3451</a>
@@ -417,27 +537,120 @@ footer {
 <!-- SERVICES -->
 <section id="services">
   <div class="services-inner">
-    <div class="section-eyebrow">What You Get</div>
-    <h2 class="section-h2">We handle your books.<br>You run your business.</h2>
-    <div class="services-list">
-      <div class="service-row">
-        <div>
-          <div class="service-tier">Every month, without fail:</div>
-        </div>
-        <div class="service-desc">
-          Every transaction categorized. Accounts reconciled. P&amp;L delivered to your inbox. Tax season arrives and there's nothing to do — your CPA gets clean files and you get a smaller bill.
-        </div>
+    <div class="section-eyebrow">What I Do</div>
+    <h2 class="section-h2">Bookkeeping services that<br>actually make sense</h2>
+    <p class="section-sub">Choose the level of support that fits where your business is right now.<br>You can always adjust as you grow.</p>
+    <div class="services-cards">
+
+      <div class="services-card">
+        <div class="services-card-icon">📅</div>
+        <div class="services-card-title">Monthly Bookkeeping</div>
+        <p class="services-card-desc">Consistent, reliable books every month so you always know where you stand — no surprises at tax time.</p>
+        <ul class="services-card-features">
+          <li>Bank &amp; credit card reconciliation</li>
+          <li>Automated categorization with smart rules</li>
+          <li>Financial statements within 15 business days</li>
+          <li>Email support for questions</li>
+          <li>Optional monthly video walkthrough</li>
+        </ul>
       </div>
-    </div>
-    <div class="services-cta" style="margin-top: 2.5rem;">
-      <a href="#contact" class="btn-primary">Get a Quote →</a>
-      <p style="margin-top: 0.9rem; font-size: 0.78rem; color: var(--muted);">Flat monthly rate. Scoped on a 30-minute call.</p>
+
+      <div class="services-card">
+        <div class="services-card-icon">🪄</div>
+        <div class="services-card-title">Cleanup &amp; Catch-Up</div>
+        <p class="services-card-desc">Months or years behind? I'll get everything sorted, corrected, and tax-ready so you can move forward with confidence.</p>
+        <ul class="services-card-features">
+          <li>Rebuild months or years of records</li>
+          <li>Transaction review and correction</li>
+          <li>Advanced import tools for bank statements</li>
+          <li>Tax-ready handoff for your CPA</li>
+        </ul>
+      </div>
+
+      <div class="services-card">
+        <div class="services-card-icon">🎓</div>
+        <div class="services-card-title">Consulting &amp; Training</div>
+        <p class="services-card-desc">Want to keep bookkeeping in-house? I'll set you up right and check in periodically to keep things on track.</p>
+        <ul class="services-card-features">
+          <li>QuickBooks setup and personalized training</li>
+          <li>Chart of accounts and workflow optimization</li>
+          <li>Monthly or quarterly accuracy reviews</li>
+          <li>Option to upgrade to full monthly service</li>
+        </ul>
+      </div>
+
     </div>
   </div>
 </section>
 
 
 
+
+
+<!-- PRICING -->
+<section id="pricing">
+  <div class="pricing-inner">
+    <div class="section-eyebrow">Pricing</div>
+    <h2 class="section-h2">Transparent pricing.<br>No contracts. No surprises.</h2>
+    <p class="section-sub">Most small businesses lose thousands each year from messy books and avoidable tax issues. Clean books cost less than one bad decision.</p>
+    <div class="pricing-guarantee">100% satisfaction in month one — or you don't pay</div>
+    <div class="pricing-cards">
+
+      <!-- Essential -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Essential</div>
+        <div class="pricing-tagline">Simple, accurate books every month</div>
+        <div class="pricing-price">$250–$350 <span>/ mo</span></div>
+        <div class="pricing-note">Best for sole proprietors and owner-operators under $500K revenue</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Monthly bank &amp; card reconciliation</li>
+          <li>Expense categorization with bank rules</li>
+          <li>Monthly P&amp;L and financial statements</li>
+        </ul>
+        <a href="#contact" class="btn-pricing">Get Started</a>
+      </div>
+
+      <!-- Professional (featured) -->
+      <div class="pricing-card featured">
+        <div class="pricing-badge">Most Popular</div>
+        <div class="pricing-tier">Professional</div>
+        <div class="pricing-tagline">Clear numbers that support growth</div>
+        <div class="pricing-price">$350–$500 <span>/ mo</span></div>
+        <div class="pricing-note">Best for growing trades businesses with multiple accounts</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Everything in Essential</li>
+          <li>Light AR and AP tracking</li>
+          <li>Quarterly performance summary</li>
+          <li>Priority support</li>
+        </ul>
+        <a href="#contact" class="btn-pricing">Get Started</a>
+      </div>
+
+      <!-- Premium -->
+      <div class="pricing-card">
+        <div class="pricing-tier">Premium</div>
+        <div class="pricing-tagline">Hands-on support and advanced reporting</div>
+        <div class="pricing-price">$500–$750 <span>/ mo</span></div>
+        <div class="pricing-note">Best for established or multi-entity businesses</div>
+        <div class="pricing-divider"></div>
+        <ul class="pricing-features">
+          <li>Everything in Professional</li>
+          <li>Custom reports and KPI dashboards</li>
+          <li>Accrual, payroll, and loan tracking</li>
+          <li>Monthly Loom video walkthrough</li>
+          <li>CPA-ready books for tax time</li>
+        </ul>
+        <a href="#contact" class="btn-pricing">Get Started</a>
+      </div>
+
+    </div>
+    <div class="pricing-footer-note">
+      🛠 <strong>Not ready for monthly bookkeeping?</strong> Quarterly bookkeeping is available at 75% of the monthly rate — ideal if you don't need monthly reports but still want clean, tax-ready books. Pricing reflects complexity. Cancel anytime.
+    </div>
+  </div>
+</section>
 
 
 <!-- CONTACT -->
